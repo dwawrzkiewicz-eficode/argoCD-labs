@@ -6,6 +6,7 @@ metadata:
     app: test-app
     app.kubernetes.io/instance: app
   name: test-app-svc-np
+  namespace: default
 spec:
   ports:
   - port: 80
