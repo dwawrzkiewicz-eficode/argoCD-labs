@@ -19,7 +19,7 @@ spec:
         app: test-app
     spec:
       containers:
-      - image: kodekloud/webapp-color:v3
+      - image: kodekloud/webapp-color:v2
         name: webapp-color
         ports:
         - containerPort: 80
