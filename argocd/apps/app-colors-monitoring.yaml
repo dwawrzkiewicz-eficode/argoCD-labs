@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: monitoring-prometheus
+  namespace: monitoring
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: colors
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: test/monitoring/prometheus
+    repoURL: 'https://github.com/dwawrzkiewicz-eficode/argoCD-labs.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
