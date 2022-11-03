@@ -5,7 +5,7 @@ metadata:
   labels:
     app: test-app
   name: test-app
-  namespace: default
+  namespace: colors
 spec:
   selector:
     matchLabels:

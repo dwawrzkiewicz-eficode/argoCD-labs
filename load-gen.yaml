@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: load-gen
+  name: load-gen
+  namespace: default
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: load-gen
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: load-gen
+    spec:
+      containers:
+      - image: nicolaka/netshoot
+        name: loadgen
+        command: ["/bin/sh"]
+        args: ["-c", "while true; do curl  test-app-svc-np.colors.svc.cluster.local:80   ; done"]
