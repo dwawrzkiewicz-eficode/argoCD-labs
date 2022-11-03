@@ -7,7 +7,6 @@ spec:
   scaleTargetRef:
     name: test-app
     kind: deployment
-
   pollingInterval:  30    
   cooldownPeriod:   300                              
   minReplicaCount:  1 
@@ -22,9 +21,9 @@ spec:
   - type: prometheus
     metadata:
       serverAddress: http://prometheus-service.monitoring.svc.cluster.local:8080
-      metricName: container_spec_cpu_period
+      metricName: container_cpu_usage_seconds_total
       threshold: '1'
-      query: sum(rate(container_spec_cpu_period{deployment="test-app"}[2m]))
+      query: rate(container_cpu_usage_seconds_total{container="webapp-color"}[5m])
 
   advanced:                                          
     restoreToOriginalReplicaCount: false        
