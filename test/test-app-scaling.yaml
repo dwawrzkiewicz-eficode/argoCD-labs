@@ -14,16 +14,14 @@ spec:
 
 
 
-
-
-
   triggers:
   - type: prometheus
     metadata:
       serverAddress: http://prometheus-service.monitoring.svc.cluster.local:8080
-      metricName: container_cpu_usage_seconds_total
-      threshold: '1'
-      query: rate(container_cpu_usage_seconds_total{container="webapp-color"}[5m])
+      metricName: my_unique_name_container_cpu_usage_seconds_total
+      threshold: '0.001'
+      activationThreshold: '0.001'
+      query: irate(container_cpu_usage_seconds_total{container="webapp-color"}[5m])
 
   advanced:                                          
     restoreToOriginalReplicaCount: false        
@@ -34,5 +32,9 @@ spec:
           stabilizationWindowSeconds: 60
           policies:
           - type: Percent
-            value: 10
+            value: 1
             periodSeconds: 15
+
+
+
+~

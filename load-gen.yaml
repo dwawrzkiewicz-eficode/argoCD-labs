@@ -7,7 +7,7 @@ metadata:
   name: load-gen
   namespace: default
 spec:
-  replicas: 10
+  replicas: 5
   selector:
     matchLabels:
       app: load-gen
